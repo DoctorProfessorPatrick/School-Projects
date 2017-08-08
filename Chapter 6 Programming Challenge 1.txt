@@ -1,0 +1,21 @@
+// Edwin Catalan
+// CIS115
+// Programming Challenge 1
+#include <iostream>
+
+using namespace std;
+void calculateRetail(int retailPrice);
+int calculateRetail()
+{
+    float markup, wholesaleCost, retailPrice;
+    cout << "Enter the item's cost: \n";
+    cin >> wholesaleCost;
+    cout << "Enter the markup percentage you will use: \n";
+    cin >> markup;
+    retailPrice = ((wholesaleCost/100) * markup) + wholesaleCost;
+    cout << "The item's retail price will be " << retailPrice <<".";
+}
+int main()
+{
+    calculateRetail();
+}

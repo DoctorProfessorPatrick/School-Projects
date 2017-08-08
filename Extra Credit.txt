@@ -1,0 +1,71 @@
+ // Edwin Catalan
+ // CIS 115
+ // Programming Challenge 5
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+	const int MONKEYS = 3;
+	const int DAYS = 7;
+	int feed[MONKEYS][DAYS];
+	double pounds, least, most, sum = 0, avg;
+	
+
+	// Ask user to input data for each monkey
+	cout << "Enter how many pounds of food each monkey ate each day.\n";
+	for (int row = 0; row < MONKEYS; row++)
+	{
+		for (int col = 0; col < DAYS; col++)
+		{
+			do
+			{
+
+				cout << "Monkey " << (row + 1) << " on day " << (col + 1)
+					 << " ate: ";
+				cin  >> pounds;
+
+				if (pounds < 0)
+				{
+					cout << "Error! Number of pounds must be greater than 0.\n";
+				}
+
+			} while (pounds < 0);
+
+			feed[row][col] = pounds;
+
+
+			// Gets total food eaten per day by the whole family of monkeys.
+			sum += pounds;
+		}
+		cout << "\n"; 
+
+	}
+
+	// Gets least and greatest amount of food eaten by any one monkey.
+	least = most = feed[0][0];
+	for (int row = 0; row < MONKEYS; row++)
+	{
+		for (int col = 0; col < DAYS; col++)
+		{
+			
+			if (feed[row][col] < least)
+			{ 
+				least = feed[row][col];
+			}
+			if (feed[row][col] > most)
+			{ 
+				most = feed[row][col];
+			}
+		}
+		
+	}
+avg = sum / 21.0;
+	cout << "\nReport:\n";
+	cout << "Average amount of food eaten per day : " << avg << " pounds\n";
+	cout << "Least amount of food eaten: " << least << " pounds.\n";
+	cout << "Greatest amount of food eaten: " << most << " pounds.\n";
+
+	return 0;
+}

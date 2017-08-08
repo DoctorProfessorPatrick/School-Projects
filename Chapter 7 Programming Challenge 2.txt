@@ -1,0 +1,59 @@
+//Edwin Catalan
+// CIS115
+// Programming Challenge 2
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+
+const int MONTHS = 12;
+	int count = 0;
+	string month[MONTHS] = { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" }; //thought it would be better to use string instead of generic month numbers
+	double rain[MONTHS], avg, total, highest, lowest;
+	string high, low;
+
+	for (count = 0; count < MONTHS; count++) // asks the user to enter amount of rainfall for each month
+	{
+		cout << "How many inches of rain did " << month[count] << " have? \n";
+		cin >> rain[count];
+		while (rain[count] < 0)
+		{
+			cout << "Please enter a number greater than or equal to 0.\n";
+			cin >> rain[count];
+		}
+	}
+
+	highest = rain[0]; // finds month with the highest amount of rain
+	lowest = rain[0]; // finds month with the least amount of rain
+
+	for (count = 1; count < MONTHS; count++)
+	{
+		if (rain[count] > highest)
+		{
+			high = month[count];
+			highest = rain[count];
+		}
+		else if (rain[count] < lowest)
+		{
+			low = month[count];
+			lowest = rain[count];
+		}
+	}
+
+	avg = (total / MONTHS);
+
+	for (count = 0; count < MONTHS; count++)
+	{
+		total += rain[count];
+		avg = (total / MONTHS);
+		}
+
+	
+	cout << "Total rainfall throughout the year was " << total << " inches.\n";
+	cout << "The average monthly rainfall is " << avg << " inches\n";
+	cout << "The month with the highest amount of rainfall is " << high << " with " << highest << " inches.\n";
+	cout << "The month with the lowest amount of rainfall is " << low << " with " << lowest << " inches.\n";
+	
+}
