@@ -1,0 +1,55 @@
+// Edwin Catalan
+// CIS 115
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+void game();
+void gameLoop();
+int playerChoice, compChoice, wins=0, losses=0, ties=0; //Decided to give it a scoreboard to make it a little more fun
+int main()
+{
+	game();
+	gameLoop();
+	return 0;
+}
+void game()
+{
+	cout << "ROCK PAPER SCISSORS \n";
+	cout << "Would you like to play a game?\n";
+	cout << "You will face off against the computer.  Good luck! \n";
+}
+void gameLoop(){
+restart:
+
+	srand(time(0));
+	compChoice = rand() % 3 + 1;
+	cout << "\n1: Rock \n2: Paper \n3: Scissor\n";
+	cout << "Please make your selection: ";
+	cin >> playerChoice;
+	if (playerChoice > 3 || playerChoice < 1)
+	{
+	    cout <<" Error! Make a different choice.\n";
+	    goto restart;
+	}
+	cout << "You chose " << playerChoice << " and the computer chose " << compChoice << ".\n";
+	if(playerChoice == compChoice )
+	{cout <<"It's a draw!\n";
+		ties++;
+	}
+	else if ((playerChoice == 1 && compChoice == 3) || (playerChoice == 2 && compChoice == 1) || (playerChoice == 3 && compChoice == 2)) {
+		cout << "You won!\n";
+		wins++;
+	}
+	
+	else {
+	    cout <<"You lost!\n";
+	    losses++; }
+	cout << "\nScoreboard: Wins= " << wins << " Losses= " << losses << " Ties= " << ties << "\n"; 
+
+	char playAgain='No';
+	cout << "\nType 'y' to play again or 'n' to quit: ";
+	cin >> playAgain;
+	while(playAgain != 'n')
+		goto restart;
+}
